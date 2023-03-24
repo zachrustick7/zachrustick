@@ -125,7 +125,7 @@ function App() {
                 <Link activeStyle={{color: '#3C7EEB'}} to="about" spy={true} smooth={true} offset={-50} duration={500}><p style={{margin: '0 8px', cursor: 'pointer'}}>About</p></Link>
                 <Link activeStyle={{color: '#3C7EEB'}} to="skills" spy={true} smooth={true} offset={-50} duration={500}><p style={{margin: '0 8px', cursor: 'pointer'}}>Skills</p></Link>
                 <Link activeStyle={{color: '#3C7EEB'}} to="projects" spy={true} smooth={true} offset={-50} duration={500}><p style={{margin: '0 8px', cursor: 'pointer'}}>Projects</p></Link>
-                <Link activeStyle={{color: '#3C7EEB'}} to="contact" spy={true} smooth={true} offset={-50} duration={500}><p style={{margin: '0 8px', cursor: 'pointer'}}>Contact Me</p></Link>
+                <Link activeStyle={{color: '#3C7EEB'}} to="contact" spy={true} smooth={true} offset={-50} duration={500}><p style={{margin: '0 8px', cursor: 'pointer'}}>{wh > ww ? 'Contact' : 'Contact Me'}</p></Link>
               </div>
 
           </div>
@@ -146,7 +146,9 @@ function App() {
           >
             <div style={{textAlign: 'start'}}>
               <h6>Hello, I am</h6>
-              <h3>Zach Rustick</h3>
+              {wh > ww && <h4>Zach Rustick</h4>}
+              {wh < ww && <h3>Zach Rustick</h3>}
+              {/* <h3>Zach Rustick</h3> */}
               <p>Web developer/designer with a passion for creating beautiful and intuitive user experiences.</p>
               <Link to="projects" spy={true} smooth={true} offset={-50} duration={500}>
                 <button 
@@ -165,18 +167,21 @@ function App() {
                 </button>
               </Link>
             </div>
-            <img 
-              style={{
-                objectFit: 'cover',
-                maxWidth: '260px',
-                maxHeight: '260px',
-                borderRadius: '8px',
-                marginLeft: '80px',
-                marginBottom: '16px',
-              }}
-              src={ZachRustickPhoto}
-              alt='Mr. Zach Rustick'
-            />
+            {!(wh > ww) && 
+              <img 
+                style={{
+                  objectFit: 'cover',
+                  maxWidth: '260px',
+                  maxHeight: '260px',
+                  borderRadius: '8px',
+                  marginLeft: '80px',
+                  marginBottom: '16px',
+                }}
+                src={ZachRustickPhoto}
+                alt='Mr. Zach Rustick'
+              />
+            }
+            
             
           </div>
           
@@ -226,20 +231,23 @@ function App() {
                 <p style={{textAlign: 'left'}}>Software engineer, with extensive knowledge and years of experience, designing responsive websites and quality backend infrastructure.</p>
               </div>
               
-              <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-                <div style={{textAlign: 'center', maxWidth: '70px', margin: '30px 30px'}}>
-                  <h5>3+</h5>
-                  <p>Years Experience</p>
+              {!(wh > ww) &&
+                <div style={{width: '100%', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-evenly', alignItems: 'center'}}>
+                  <div style={{textAlign: 'center', maxWidth: '70px', margin: '30px 30px'}}>
+                    <h5>3+</h5>
+                    <p>Years Experience</p>
+                  </div>
+                  <div style={{textAlign: 'center', maxWidth: '70px', margin: '30px 30px'}}>
+                    <h5>2</h5>
+                    <p>Companies Worked</p>
+                  </div>
+                  <div style={{textAlign: 'center', maxWidth: '70px', margin: '30px 30px'}}>
+                    <h5>1</h5>
+                    <p>Hackathons Won</p>
+                  </div>
                 </div>
-                <div style={{textAlign: 'center', maxWidth: '70px', margin: '30px 30px'}}>
-                  <h5>2</h5>
-                  <p>Companies Worked</p>
-                </div>
-                <div style={{textAlign: 'center', maxWidth: '70px', margin: '30px 30px'}}>
-                  <h5>1</h5>
-                  <p>Hackathons Won</p>
-                </div>
-              </div>
+              }
+              
             </div>
           </div>
 
@@ -466,93 +474,185 @@ function App() {
             }}
           >
             <h6>Projects</h6>
-            <div
-              style={{
-                width: '100%',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-evenly',
-                marginTop: '30px',
-                flexWrap: 'wrap'
-              }}
-            >
-              {/* coursebuddy */}
-              <div 
+            {/* desktop */}
+            {!(wh > ww) &&
+              <div
                 style={{
-                  borderRadius: '8px',
-                  padding: '20px',
+                  width: '100%',
                   display: 'flex',
-                  alignItems: 'start',
-                  backgroundColor: '#545454',
-                  height: '280px'
+                  flexDirection: 'column',
+                  justifyContent: 'space-evenly',
+                  marginTop: '30px',
+                  flexWrap: 'wrap'
                 }}
               >
+                {/* coursebuddy */}
+                
                 <div 
                   style={{
-                    height: '100%',
+                    borderRadius: '8px',
+                    padding: '20px',
                     display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
                     alignItems: 'start',
-                    marginRight: '24px'
+                    backgroundColor: '#545454',
+                    height: '280px'
                   }}
                 >
-                  <p>CourseBuddy, <p style={{color: '#ababab', display: 'inline'}}>Founder/ Full Stack Engineer</p></p>
-                  <p style={{textAlign: 'left'}}>A college class scheduling tool that does the hard stuff for you. This project began as a hackathon submission but, after winning first place, I was encouraged to continue development on it. After taking it through UGA’s I-Corps business development program and receiving a grant from UGA’s Kickstarter fund for $1,000, it has grown to support hundreds of students each semester.</p>
-                  <a style={{textDecoration: 'none'}} href='https://coursebuddy.co'><p style={{color: '#ababab'}}>coursebuddy.co</p></a>
+                  <div 
+                    style={{
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'space-between',
+                      alignItems: 'start',
+                      marginRight: '24px'
+                    }}
+                  >
+                    <p>CourseBuddy, <p style={{color: '#ababab', display: 'inline'}}>Founder/ Full Stack Engineer</p></p>
+                    <p style={{textAlign: 'left'}}>A college class scheduling tool that does the hard stuff for you. This project began as a hackathon submission but, after winning first place, I was encouraged to continue development on it. After taking it through UGA’s I-Corps business development program and receiving a grant from UGA’s Kickstarter fund for $1,000, it has grown to support hundreds of students each semester.</p>
+                    <a style={{textDecoration: 'none'}} href='https://coursebuddy.co'><p style={{color: '#ababab'}}>coursebuddy.co</p></a>
+                  </div>
+
+                  <img 
+                    style={{
+                      objectFit: 'cover',
+                      maxWidth: '450px',
+                      borderRadius: '4px',
+                      margin: '20px 0'
+                    }}
+                    src={coursebuddyImg}
+                    alt='coursebuddy screngrab'
+                  />
                 </div>
 
-                <img 
+                {/* bluefletch */}
+                <div 
                   style={{
-                    objectFit: 'cover',
-                    maxWidth: '450px',
-                    borderRadius: '4px',
-                    margin: '20px 0'
+                    borderRadius: '8px',
+                    padding: '20px',
+                    display: 'flex',
+                    alignItems: 'start',
+                    backgroundColor: '#545454',
+                    height: '280px',
+                    marginTop: '40px'
                   }}
-                  src={coursebuddyImg}
-                  alt='coursebuddy screngrab'
-                />
-              </div>
+                >
+                  <div 
+                    style={{
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'space-between',
+                      alignItems: 'start',
+                      marginRight: '24px'
+                    }}
+                  >
+                    <p>BlueFletch, <p style={{color: '#ababab', display: 'inline'}}>React Developer</p></p>
+                    <p style={{textAlign: 'left'}}>An enterprise technology company. I worked with an excellent team to help build out Bluefletch’s portal where clients can configure the software that is used by their fleet of android devices. Being my first job out of college, I learned the core fundamentals of web programming, scrum style project development, and best practices for full stack architecture.</p>
+                    <a style={{textDecoration: 'none'}} href='https://bluefletch.com'><p style={{color: '#ababab'}}>bluefletch.com</p></a>
+                  </div>
 
-              {/* bluefletch */}
-              <div 
+                  <img 
+                    style={{
+                      objectFit: 'cover',
+                      maxWidth: '450px',
+                      borderRadius: '4px',
+                      margin: '20px 0'
+                    }}
+                    src={bluefletchImg}
+                    alt='bluefletch screngrab'
+                  />
+                </div>
+              </div>
+            }
+            
+            {/* mobile */}
+            {(wh > ww) &&
+              <div
                 style={{
-                  borderRadius: '8px',
-                  padding: '20px',
+                  width: '100%',
                   display: 'flex',
-                  alignItems: 'start',
-                  backgroundColor: '#545454',
-                  height: '280px',
-                  marginTop: '40px'
+                  flexDirection: 'column',
+                  justifyContent: 'space-evenly',
+                  marginTop: '30px',
+                  flexWrap: 'wrap'
                 }}
               >
+                {/* coursebuddy */}
                 <div 
                   style={{
-                    height: '100%',
+                    borderRadius: '8px',
+                    padding: '20px',
                     display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
                     alignItems: 'start',
-                    marginRight: '24px'
+                    backgroundColor: '#545454',
+                    
                   }}
                 >
-                  <p>BlueFletch, <p style={{color: '#ababab', display: 'inline'}}>React Developer</p></p>
-                  <p style={{textAlign: 'left'}}>An enterprise technology company. I worked with an excellent team to help build out Bluefletch’s portal where clients can configure the software that is used by their fleet of android devices. Being my first job out of college, I learned the core fundamentals of web programming, scrum style project development, and best practices for full stack architecture.</p>
-                  <a style={{textDecoration: 'none'}} href='https://bluefletch.com'><p style={{color: '#ababab'}}>bluefletch.com</p></a>
+                  <div 
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'start',
+                    }}
+                  >
+                    <p>CourseBuddy,</p>
+                    <p style={{color: '#ababab', display: 'inline'}}>Founder/ Full Stack Engineer</p>
+                    <img 
+                      style={{
+                        objectFit: 'cover',
+                        width: '100%',
+                        borderRadius: '4px',
+                        margin: '20px 0'
+                      }}
+                      src={coursebuddyImg}
+                      alt='coursebuddy screngrab'
+                    />
+                    <a style={{textDecoration: 'none'}} href='https://coursebuddy.co'><p style={{color: '#ababab'}}>coursebuddy.co</p></a>
+                    <p style={{textAlign: 'left', marginTop: '16px'}}>A college class scheduling tool that does the hard stuff for you. This project began as a hackathon submission but, after winning first place, I was encouraged to continue development on it. After taking it through UGA’s I-Corps business development program and receiving a grant from UGA’s Kickstarter fund for $1,000, it has grown to support hundreds of students each semester.</p>
+                  </div>
+
                 </div>
 
-                <img 
+                {/* bluefletch */}
+                <div 
                   style={{
-                    objectFit: 'cover',
-                    maxWidth: '450px',
-                    borderRadius: '4px',
-                    margin: '20px 0'
+                    borderRadius: '8px',
+                    padding: '20px',
+                    display: 'flex',
+                    alignItems: 'start',
+                    backgroundColor: '#545454',
+                    marginTop: '40px'
                   }}
-                  src={bluefletchImg}
-                  alt='bluefletch screngrab'
-                />
+                >
+                  <div 
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'start',
+                    }}
+                  >
+                    <p>BlueFletch,</p>
+                    <p style={{color: '#ababab', display: 'inline'}}>Web Developer</p>
+                    <img 
+                      style={{
+                        objectFit: 'cover',
+                        width: '100%',
+                        borderRadius: '4px',
+                        margin: '20px 0'
+                      }}
+                      src={bluefletchImg}
+                      alt='bluefletch screengrab'
+                    />
+                    <a style={{textDecoration: 'none'}} href='https://bluefletch.com'><p style={{color: '#ababab'}}>bluefletch.com</p></a>
+                    <p style={{textAlign: 'left', marginTop: '16px'}}>An enterprise technology company. I worked with an excellent team to help build out Bluefletch’s portal where clients can configure the software that is used by their fleet of android devices. Being my first job out of college, I learned the core fundamentals of web programming, scrum style project development, and best practices for full stack architecture.</p>
+                  </div>
+
+                </div>
               </div>
-            </div>
+            }
+
+            
           </div>
 
           {/* contact me */}
@@ -575,27 +675,27 @@ function App() {
               style={{
                 width: '100%',
                 display: 'flex',
+                flexWrap: 'wrap',
                 justifyContent: 'space-between',
-                marginTop: '40px',
                 paddingRight: '40px',
                 boxSizing: 'border-box'
               }}
             >
-              <div style={{display: 'flex'}}>
+              <div style={{display: 'flex', marginTop: '40px',}}>
                 <span class='material-icons' style={{fontSize: '50px', marginRight: '24px'}}>smartphone</span>
                 <div style={{display: 'flex', flexDirection: 'column', alignItems: 'start', justifyContent: 'center'}}>
                   <p>Call Me</p>
                   <p style={{color: '#ababab'}}>+1 (470)-358-3419</p>
                 </div>
               </div>
-              <div style={{display: 'flex'}}>
+              <div style={{display: 'flex', marginTop: '40px',}}>
                 <span class='material-icons-outlined' style={{fontSize: '50px', marginRight: '24px'}}>email</span>
                 <div style={{display: 'flex', flexDirection: 'column', alignItems: 'start', justifyContent: 'center'}}>
                   <p>Email me</p>
                   <p style={{color: '#ababab'}}>zachrustick7@gmail.com</p>
                 </div>
               </div>
-              <div style={{display: 'flex'}}>
+              <div style={{display: 'flex', marginTop: '40px',}}>
                 <span class='material-icons-outlined' style={{fontSize: '50px', marginRight: '24px'}}>location_on</span>
                 <div style={{display: 'flex', flexDirection: 'column', alignItems: 'start', justifyContent: 'center'}}>
                   <p>Location</p>
